@@ -5,6 +5,7 @@
 #include <exception>
 
 class Bureaucrat;
+
 class Form
 {
 private:
@@ -17,6 +18,7 @@ public:
 	int getSgrade();
 	int getEgrade();
 	int getIsSigned();
+	Form();
 	Form(const std::string& name, int Sgrade, int Egrade);
 	Form(const Form& copy);
 	Form& operator=(const Form& copy);
@@ -24,7 +26,6 @@ public:
 	int beSigned(Bureaucrat& Bureaucrat);
 	static int checkk(const int grade);
 };
-
 
 std::ostream &operator<<(std::ostream &o, Form &grade);
 

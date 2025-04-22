@@ -28,10 +28,10 @@ int Form::checkk(int grade)
 		else
 			return grade;
 	}
-	catch(const std::exception& e)///////////////////////
+	catch(const std::exception& e)
 	{
 		std::cout << "Error: " << e.what() << std::endl;
-		return 2;
+		return 0;
 	}
 }
 
@@ -44,6 +44,8 @@ int Form::beSigned(Bureaucrat& Bureaucrat)
 	}
 	return 0;
 }
+
+Form::Form() : name("Default"), isSigned(0), Sgrade(48), Egrade(56) {}
 
 Form::Form(const std::string& name, int Sgrade, int Egrade) : name(name), Sgrade(checkk(Sgrade)), Egrade(checkk(Egrade)) 
 {

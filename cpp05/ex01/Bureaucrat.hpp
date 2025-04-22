@@ -15,7 +15,7 @@ public:
 	int getGrade();
 	void increment();
 	void decrement();
-	int GradeHelper(int grade);
+	Bureaucrat();
 	Bureaucrat(const std::string& name, int grade);
 	Bureaucrat(const Bureaucrat& copy);
 	Bureaucrat& operator=(const Bureaucrat& copy);

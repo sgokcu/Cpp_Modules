@@ -18,6 +18,8 @@ class GradeTooLowException : public std::exception
 	}
 };
 
+Bureaucrat::Bureaucrat() : name("Default"), grade(75) {}
+
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
 	try

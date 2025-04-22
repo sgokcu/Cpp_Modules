@@ -16,6 +16,8 @@ class GradeTooLowException : public std::exception
 	}
 };
 
+Bureaucrat::Bureaucrat() : name("Default"), grade(75) {}
+
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
 	try
@@ -91,10 +93,10 @@ void Bureaucrat::decrement()
 
 void Bureaucrat::signForm(Form& form)
 {
-	if(form.beSigned(*this) == 1)//olduğum sınıfın içindeki obje oluyor.
+	if(form.beSigned(*this) == 1)
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	else
-		std::cout << this->getName() << " couldn't sign " << form.getName() << "because bureaucrat's grade is not high enough" << std::endl;
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because bureaucrat's grade is not high enough" << std::endl;
 }
 
 

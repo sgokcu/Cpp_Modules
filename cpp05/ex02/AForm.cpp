@@ -1,21 +1,21 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class GradeTooHighException : public std::exception
+const char* AForm::GradeTooHighException::what() const throw()
 {
-	virtual const char* what() const throw()
-	{
-		return "AForm::GradeTooHighException.";
-	}
-};
+    return "AForm::GradeTooHighException.";
+}
 
-class GradeTooLowException : public std::exception
+const char* AForm::GradeTooLowException::what() const throw()
 {
-	virtual const char* what() const throw()
-	{
-		return "AForm::GradeTooLowException.";
-	}
-};
+    return "AForm::GradeTooLowException.";
+}
+
+const char* AForm::FormNotSignedException::what() const throw()
+{
+    return "AForm::GradeTooLowException.";
+}
+
 
 int AForm::checkk(int grade)
 {
@@ -71,17 +71,17 @@ std::string AForm::getName() const
 	return name;
 }
 
-int AForm::getSgrade()
+int AForm::getSgrade() const
 {
 	return Sgrade;
 }
 
-int AForm::getEgrade()
+int AForm::getEgrade() const
 {
 	return Egrade;
 }
 
-int AForm::getIsSigned()
+int AForm::getIsSigned() const
 {
 	return isSigned;
 }
@@ -94,4 +94,14 @@ std::ostream &operator<<(std::ostream &o, AForm &object)
     else
         std::cout << ", Forms status: signed";
     return (o);
+}
+
+void AForm::execute(Bureaucrat const & executor) const
+{
+	if(this->getIsSigned() == 0)
+		throw FormNotSignedException();
+	if(!(executor.getGrade() > getEgrade()))
+		throw GradeTooLowException();
+	this->action();///////////////////////////////////////////////////////////////
+		
 }

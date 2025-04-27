@@ -1,20 +1,14 @@
 #include "Bureaucrat.hpp"
 
-class GradeTooHighException : public std::exception
+const char* AForm::GradeTooHighException::what() const throw()
 {
-	virtual const char* what() const throw()
-	{
-		return "Bureaucrat::GradeTooHighException.";
-	}
-};
+    return "AForm::GradeTooHighException.";
+}
 
-class GradeTooLowException : public std::exception
+const char* AForm::GradeTooLowException::what() const throw()
 {
-	virtual const char* what() const throw()
-	{
-		return "Bureaucrat::GradeTooLowException.";
-	}
-};
+    return "AForm::GradeTooLowException.";
+}
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(75) {}
 
@@ -54,7 +48,7 @@ std::string Bureaucrat::getName() const
 	return name;
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
 	return grade;
 }

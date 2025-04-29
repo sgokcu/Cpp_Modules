@@ -11,12 +11,13 @@ private:
 	const int Sgrade;
 	const int Egrade;
 public:
-	PresidentialPardonForm(const std::string target);
+	PresidentialPardonForm();
 	~PresidentialPardonForm();
 	PresidentialPardonForm(const PresidentialPardonForm& copy);
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& copy);
+	PresidentialPardonForm(const std::string target);
 public:
-	void action();
+	void action() const;
 public:
 
 };

@@ -11,17 +11,18 @@ private:
 	const std::string name;
 	int grade;
 public:
+	Bureaucrat();
+	Bureaucrat(const Bureaucrat& copy);
+	Bureaucrat& operator=(const Bureaucrat& copy);
+	~Bureaucrat();
+	Bureaucrat(const std::string& name, int grade);
+public:
 	std::string getName() const;
 	int getGrade() const;
 	void increment();
 	void decrement();
-	Bureaucrat();
-	Bureaucrat(const std::string& name, int grade);
-	Bureaucrat(const Bureaucrat& copy);
-	Bureaucrat& operator=(const Bureaucrat& copy);
-	~Bureaucrat();
 	void signForm(AForm& form);
-	void executeForm(AForm const & form) const;////////////////
+	void executeForm(AForm const & form) const;
 public:
 	class GradeTooHighException : public std::exception
 	{

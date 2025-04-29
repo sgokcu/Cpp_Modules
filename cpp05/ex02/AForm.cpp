@@ -96,12 +96,18 @@ std::ostream &operator<<(std::ostream &o, AForm &object)
     return (o);
 }
 
+void AForm::action() const
+{
+	std::cout << "actioning" << std::endl;
+}
+
 void AForm::execute(Bureaucrat const & executor) const
 {
 	if(this->getIsSigned() == 0)
 		throw FormNotSignedException();
-	if(!(executor.getGrade() > getEgrade()))
+	else if(executor.getGrade() > getEgrade())
 		throw GradeTooLowException();
-	this->action();///////////////////////////////////////////////////////////////
+	else
+		this->action();
 		
 }

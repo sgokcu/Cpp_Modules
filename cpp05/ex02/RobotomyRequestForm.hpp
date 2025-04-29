@@ -13,12 +13,13 @@ private:
 	const int Sgrade;
 	const int Egrade;
 public:
-	RobotomyRequestForm(const std::string target);
+	RobotomyRequestForm();
 	~RobotomyRequestForm();
 	RobotomyRequestForm(const RobotomyRequestForm& copy);
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);
+	RobotomyRequestForm(const std::string target);
 public:
-	void action();
+	void action() const;
 public:
 
 };

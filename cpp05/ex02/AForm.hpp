@@ -18,12 +18,12 @@ public:
 	AForm(const AForm& copy);
 	AForm& operator=(const AForm& copy);
 	virtual ~AForm();
+	AForm(const std::string& name, int Sgrade, int Egrade);
 public:
 	std::string getName() const;
-	int getSgrade() const;
-	int getEgrade() const;
+	virtual int getSgrade() const;
+	virtual int getEgrade() const;
 	int getIsSigned() const;
-	AForm(const std::string& name, int Sgrade, int Egrade);
 	int beSigned(Bureaucrat& Bureaucrat);
 	static int checkk(const int grade);
 	virtual void execute(Bureaucrat const & executor) const;
@@ -34,13 +34,12 @@ public:
 	public:
 		virtual const char* what() const throw();
 	};
-
-	class GradeTooLowException : public std::exception
+	class FormNotSignedException: public std::exception
 	{
 	public:
 		virtual const char* what() const throw();
 	};
-	class FormNotSignedException: public std::exception
+	class GradeTooLowException : public std::exception
 	{
 	public:
 		virtual const char* what() const throw();

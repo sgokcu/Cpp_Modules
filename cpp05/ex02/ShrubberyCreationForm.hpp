@@ -12,12 +12,13 @@ private:
 	const int Sgrade;
 	const int Egrade;
 public:
-	ShrubberyCreationForm(const std::string target);//bu da değiştirilmeli!!!!! ve pdfte 11.sayfada kaldın.
+	ShrubberyCreationForm();
+	ShrubberyCreationForm(const std::string target);
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& copy);
 public:
-	void action();
+	void action() const;
 public:
 
 };

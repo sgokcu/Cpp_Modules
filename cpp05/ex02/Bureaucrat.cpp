@@ -101,6 +101,15 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat &object)
 
 void Bureaucrat::executeForm(AForm const & form) const
 {
+	try
+	{
         form.execute(*this);
         std::cout << name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+        std::cout << name << " couldn't executed " << form.getName() <<  << std::endl;
+		
+	}
 }
+	

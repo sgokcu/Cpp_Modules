@@ -103,13 +103,14 @@ void Bureaucrat::executeForm(AForm const & form) const
 {
 	try
 	{
+		if(!form.getIsSigned())
+			throw AForm::FormNotSignedException();
         form.execute(*this);
         std::cout << name << " executed " << form.getName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-        std::cout << name << " couldn't executed " << form.getName() <<  << std::endl;
-		
+        std::cout << name << " couldn't executed " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 	

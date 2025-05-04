@@ -4,7 +4,6 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-
 int main()
 {
 	Bureaucrat cat = Bureaucrat("Cat", 1);
@@ -13,8 +12,17 @@ int main()
 	PresidentialPardonForm pardon = PresidentialPardonForm("Mr.President");
 	RobotomyRequestForm robot = RobotomyRequestForm("Wall-E");
 	
-	//cat.signForm(berry);
-	//cat.executeForm(berry);
+	dog.signForm(pardon);
+	dog.executeForm(pardon);
+	std::cout << "**************************************" << std::endl;
+	dog.signForm(robot);
+	dog.executeForm(robot);
+	std::cout << "**************************************" << std::endl;
+	dog.signForm(berry);
+	dog.executeForm(berry);
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" << std::endl;
+	cat.signForm(berry);
+	cat.executeForm(berry);
 	std::cout << "**************************************" << std::endl;
 	cat.signForm(pardon);
 	cat.executeForm(pardon);
@@ -22,15 +30,7 @@ int main()
 	cat.signForm(robot);
 	cat.executeForm(robot);
 	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" << std::endl;
-	dog.signForm(berry);
-	dog.executeForm(berry);
-	std::cout << "**************************************" << std::endl;
 	dog.signForm(pardon);
 	dog.executeForm(pardon);
-	std::cout << "**************************************" << std::endl;
-	dog.signForm(robot);
-	dog.executeForm(robot);
-	//hatalı durumda core dump alıyo onu düzeltmen lazım!!!
-	
 }
 

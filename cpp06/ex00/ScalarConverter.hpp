@@ -22,3 +22,4 @@ public:
 bool isInteger(const std::string& str);
 
 #endif
+//compiler time bu static castler

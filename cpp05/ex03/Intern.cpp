@@ -30,7 +30,6 @@ AForm* Intern::makeForm(std::string name, std::string target)
 			std::cout << "Intern creates " << name << std::endl;
 			j = 1;
 			return (this->*funcs[i])(target);
-			break ;
 		}
 	}
 	if (j == 0)

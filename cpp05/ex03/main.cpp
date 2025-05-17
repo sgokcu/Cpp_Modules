@@ -8,11 +8,14 @@
 
 int main()
 {
+	Bureaucrat cat = Bureaucrat("Cat", 1);
 	{
 		Intern someRandomIntern;
 		AForm* rrf;
 		rrf = someRandomIntern.makeForm("robotomy request", "Wall-E");
 		std::cout << *rrf << std::endl;
+		cat.signForm(*rrf);
+		cat.executeForm(*rrf);
 		delete rrf;
 	}
 	std::cout << "**************************************" << std::endl;
@@ -21,6 +24,8 @@ int main()
 		AForm* rrf;
 		rrf = someRandomIntern.makeForm("presidential pardon", "Mr.President");
 		std::cout << *rrf << std::endl;
+		cat.signForm(*rrf);
+		cat.executeForm(*rrf);
 		delete rrf;
 	}	
 	std::cout << "**************************************" << std::endl;
@@ -29,6 +34,8 @@ int main()
 		AForm* rrf;
 		rrf = someRandomIntern.makeForm("shrubbery creation", "Home");
 		std::cout << *rrf << std::endl;
+		cat.signForm(*rrf);
+		cat.executeForm(*rrf);
 		delete rrf;
 	}
 	std::cout << "**************************************" << std::endl;
@@ -38,14 +45,6 @@ int main()
 		rrf = someRandomIntern.makeForm("wrongform example", "Wall-E");
 		delete rrf;
 	}
-	//ekstra test ekle!!!!!!!!!!!!!!!!!!!
-	std::cout << "**************************************" << std::endl;
-	{
-		Intern someRandomIntern;
-		AForm* rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		std::cout << *rrf << std::endl;
-		delete rrf;
-	}
+	
 }
 

@@ -18,13 +18,14 @@ public:
 	int getSgrade();
 	int getEgrade();
 	int getIsSigned();
-	Form();
+	int beSigned(Bureaucrat& Bureaucrat);
+	static int checkk(const int grade);
+public:
 	Form(const std::string& name, int Sgrade, int Egrade);
+	Form();
 	Form(const Form& copy);
 	Form& operator=(const Form& copy);
 	~Form();
-	int beSigned(Bureaucrat& Bureaucrat);
-	static int checkk(const int grade);
 };
 
 std::ostream &operator<<(std::ostream &o, Form &grade);

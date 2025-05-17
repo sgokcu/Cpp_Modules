@@ -14,12 +14,6 @@ private:
 	const int Sgrade;
 	const int Egrade;
 public:
-	AForm();
-	AForm(const AForm& copy);
-	AForm& operator=(const AForm& copy);
-	virtual ~AForm();
-	AForm(const std::string& name, int Sgrade, int Egrade);
-public:
 	std::string getName() const;
 	virtual int getSgrade() const;
 	virtual int getEgrade() const;
@@ -28,6 +22,12 @@ public:
 	static int checkk(const int grade);
 	virtual void execute(Bureaucrat const & executor) const;
 	virtual void action() const = 0;
+public:
+	AForm(const AForm& copy);
+	AForm();
+	AForm& operator=(const AForm& copy);
+	virtual ~AForm();
+	AForm(const std::string& name, int Sgrade, int Egrade);
 public:
 	class GradeTooHighException : public std::exception
 	{

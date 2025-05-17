@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include <iostream>
 
 int main()
 {
@@ -19,6 +18,8 @@ int main()
 	std::cout << "******************************************" << std::endl;
 	bro1.increment();
 	bro2.decrement();
+	std::cout << bro1 << std::endl;
+	std::cout << bro2 << std::endl;
 	std::cout << "******************************************" << std::endl;
 	Bureaucrat bro3 = Bureaucrat("Tanya3", 0);
 	Bureaucrat bro4 = Bureaucrat("Tanya4", 151);

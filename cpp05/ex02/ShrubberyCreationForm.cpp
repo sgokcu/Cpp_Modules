@@ -20,8 +20,10 @@ void ShrubberyCreationForm::action() const
 	std::ofstream stream((target + "_shrubbery").c_str());
 
     if (!stream)
+    {
         std::cout << "Error: couldn't open the file " << target + "_shrubbery" << std::endl;
-
+        return;
+    }
     stream << "            &&& &&  & &&" << std::endl;
     stream << "        && &\\/&\\|& ()|/ @, &&" << std::endl;
     stream << "        &\\/(/&/&||/& /_/)_&/_&" << std::endl;
@@ -37,4 +39,3 @@ void ShrubberyCreationForm::action() const
 
 	stream.close();
 }
-

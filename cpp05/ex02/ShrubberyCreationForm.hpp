@@ -12,13 +12,14 @@ private:
 	const int Sgrade;
 	const int Egrade;
 public:
-	ShrubberyCreationForm();
+	void action() const;
+public:
 	ShrubberyCreationForm(const std::string target);
-	~ShrubberyCreationForm();
+	ShrubberyCreationForm();
 	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& copy);
-public:
-	void action() const;
+	~ShrubberyCreationForm();
+
 public:
 	class GradeTooHighException : public std::exception
 	{

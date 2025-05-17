@@ -1,6 +1,4 @@
 #include "Bureaucrat.hpp"
-#include <iostream>
-#include <exception>
 
 class GradeTooHighException : public std::exception
 {

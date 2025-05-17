@@ -13,13 +13,14 @@ private:
 	const int Sgrade;
 	const int Egrade;
 public:
+	void action() const;
+public:
+	RobotomyRequestForm(const std::string target);
 	RobotomyRequestForm();
-	~RobotomyRequestForm();
 	RobotomyRequestForm(const RobotomyRequestForm& copy);
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);
-	RobotomyRequestForm(const std::string target);
-public:
-	void action() const;
+	~RobotomyRequestForm();
+
 public:
 	class GradeTooHighException : public std::exception
 	{

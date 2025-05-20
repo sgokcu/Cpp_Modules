@@ -13,18 +13,18 @@ Array<T>::Array(unsigned int n) : _data(new T[n]), _size(n) {
 }
 
 template <typename T>
-Array<T>::Array(const Array& other) : _data(NULL), _size(0) {
-    *this = other;
+Array<T>::Array(const Array& copy) : _data(NULL), _size(0) {
+    *this = copy;
 }
 
 template <typename T>
-Array<T>& Array<T>::operator=(const Array& other) {
-    if (this != &other) {
+Array<T>& Array<T>::operator=(const Array& copy) {
+    if (this != &copy) {
         delete[] _data;
-        _size = other._size;
+        _size = copy._size;
         _data = new T[_size];
         for (std::size_t i = 0; i < _size; ++i)
-            _data[i] = other._data[i];
+            _data[i] = copy._data[i];
     }
     return *this;
 }

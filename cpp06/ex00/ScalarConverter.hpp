@@ -21,6 +21,3 @@ public:
 };
 
 #endif
-
-
-//compiler time bu static castler

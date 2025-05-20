@@ -4,7 +4,7 @@ int main()
 {
     Data d;
     d.id = 42;
-    d.name = "Şimal";
+    d.name = "Jacob";
 
     uintptr_t raw = Serializer::serialize(&d);
     Data* restored = Serializer::deserialize(raw);

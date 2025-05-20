@@ -47,6 +47,5 @@ int main() {
     identify(obj);
     identify(*obj);
     delete obj;
-    return 0;
 }
 

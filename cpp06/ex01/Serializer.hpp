@@ -2,15 +2,15 @@
 #define SERIALIZER_HPP
 
 #include "Data.hpp"
-#include <stdint.h> // uintptr_t
+#include <stdint.h>
 #include <iostream>
 
 
 class Serializer {
 private:
     Serializer();
-    Serializer(const Serializer&);
-    Serializer& operator=(const Serializer&);
+    Serializer(const Serializer& copy);
+    Serializer& operator=(const Serializer& copy);
     ~Serializer();
 
 public:

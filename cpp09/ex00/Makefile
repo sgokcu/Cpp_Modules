@@ -6,7 +6,7 @@ CPP = c++
 
 RM = rm -rf
 
-SRCS = main.cpp 
+SRCS = main.cpp BitcoinExchange.cpp
 
 all: $(NAME)
 

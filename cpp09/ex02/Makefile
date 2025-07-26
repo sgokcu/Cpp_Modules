@@ -1,4 +1,4 @@
-NAME = rpn
+NAME = pmergeme
 
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 
@@ -6,7 +6,7 @@ CPP = c++
 
 RM = rm -rf
 
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 all: $(NAME)
 

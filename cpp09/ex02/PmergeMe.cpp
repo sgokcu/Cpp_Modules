@@ -1,15 +1,14 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {}
-PmergeMe::~PmergeMe() {}
-
-std::vector<int> PmergeMe::sortWithVector(const std::vector<int>& input) {
+std::vector<int> sortWithVector(const std::vector<int>& input)
+{
 	std::vector<int> vec = input;
 	mergeInsertSort(vec, 0, vec.size() - 1);
 	return vec;
 }
 
-void PmergeMe::mergeInsertSort(std::vector<int>& vec, int left, int right) {
+void mergeInsertSort(std::vector<int>& vec, int left, int right) 
+{
     if (left >= right)
         return;
 
@@ -20,7 +19,8 @@ void PmergeMe::mergeInsertSort(std::vector<int>& vec, int left, int right) {
     merge(vec, left, mid, right);      
 }
 
-void PmergeMe::merge(std::vector<int>& vec, int left, int mid, int right) {
+void merge(std::vector<int>& vec, int left, int mid, int right) 
+{
     std::vector<int> leftVec;
     std::vector<int> rightVec;
 
@@ -31,7 +31,8 @@ void PmergeMe::merge(std::vector<int>& vec, int left, int mid, int right) {
 
     int i = 0, j = 0, k = left;
 
-    while (i < (int)leftVec.size() && j < (int)rightVec.size()) {
+    while (i < (int)leftVec.size() && j < (int)rightVec.size()) 
+    {
         if (leftVec[i] < rightVec[j])
             vec[k++] = leftVec[i++];
         else
@@ -45,13 +46,15 @@ void PmergeMe::merge(std::vector<int>& vec, int left, int mid, int right) {
 }
 
 
-std::deque<int> PmergeMe::sortWithDeque(const std::vector<int>& input) {
+std::deque<int> sortWithDeque(const std::vector<int>& input) 
+{
 	std::deque<int> deq(input.begin(), input.end());
 	mergeInsertSort(deq, 0, deq.size() - 1);
 	return deq;
 }
 
-void PmergeMe::mergeInsertSort(std::deque<int>& deq, int left, int right) {
+void mergeInsertSort(std::deque<int>& deq, int left, int right) 
+{
 	if (left >= right)
 		return;
 
@@ -61,25 +64,28 @@ void PmergeMe::mergeInsertSort(std::deque<int>& deq, int left, int right) {
 	merge(deq, left, mid, right);
 }
 
-void PmergeMe::merge(std::deque<int>& deq, int left, int mid, int right) {
-	std::deque<int> temp;
-	int i = left;
-	int j = mid + 1;
+void merge(std::deque<int>& deq, int left, int mid, int right)
+{
+    std::deque<int> leftDeq;
+    std::deque<int> rightDeq;
 
-	while (i <= mid && j <= right) {
-		if (deq[i] <= deq[j])
-			temp.push_back(deq[i++]);
-		else
-			temp.push_back(deq[j++]);
-	}
-	while (i <= mid)
-		temp.push_back(deq[i++]);
-	while (j <= right)
-		temp.push_back(deq[j++]);
+    for (int i = left; i <= mid; ++i)
+        leftDeq.push_back(deq[i]);
+    for (int i = mid + 1; i <= right; ++i)
+        rightDeq.push_back(deq[i]);
 
-	for (int k = 0; k < static_cast<int>(temp.size()); ++k)
-		deq[left + k] = temp[k];
+    int i = 0, j = 0, k = left;
+
+    while (i < (int)leftDeq.size() && j < (int)rightDeq.size()) 
+    {
+        if (leftDeq[i] < rightDeq[j])
+            deq[k++] = leftDeq[i++];
+        else
+            deq[k++] = rightDeq[j++];
+    }
+
+    while (i < (int)leftDeq.size())
+        deq[k++] = leftDeq[i++];
+    while (j < (int)rightDeq.size())
+        deq[k++] = rightDeq[j++];
 }
-
-
-

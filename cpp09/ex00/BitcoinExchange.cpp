@@ -1,10 +1,12 @@
 #include "BitcoinExchange.hpp"
 
-std::map<std::string, float> loadCsv(const std::string& filename) {
+std::map<std::string, float> loadCsv(const std::string& filename) 
+{
     std::map<std::string, float> data;
     std::ifstream file(filename.c_str());
 
-    if (!file.is_open()) {
+    if (!file.is_open()) 
+    {
         std::cerr << "Error: could not open file." << std::endl;
         return data;
     }
@@ -12,27 +14,32 @@ std::map<std::string, float> loadCsv(const std::string& filename) {
     std::string line;
     std::getline(file, line);
 
-    while (std::getline(file, line)) {
+    while (std::getline(file, line)) 
+    {
         std::istringstream ss(line);
         std::string date, valueStr;
 
-        if (std::getline(ss, date, ',') && std::getline(ss, valueStr)) {
+        if (std::getline(ss, date, ',') && std::getline(ss, valueStr)) 
+        {
             trim(date);
             trim(valueStr);
             float value = std::atof(valueStr.c_str());
             data[date] = value;
         }
     }
-
     return data;
 }
 
-bool isValidDate(const std::string& date, const std::string& value) {
-    if (date.length() != 10 || date[4] != '-' || date[7] != '-') return false;
-
+bool isValidDate(const std::string& date, const std::string& value) 
+{
+    if (date.length() != 10 || date[4] != '-' || date[7] != '-')
+    {
+        std::cerr << "Error: bad input => " << date << " | " << value << std::endl;
+        return false;
+    }
     int year, month, day;
     char dash1, dash2;
-    std::stringstream ss(date);
+    std::istringstream ss(date);
     ss >> year >> dash1 >> month >> dash2 >> day;
 
     if ((ss.fail() || dash1 != '-' || dash2 != '-') || (month < 1 || month > 12) || (day < 1 || day > 31) || (month == 2  && (year % 4 != 0) && day > 29) ||  ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)) 
@@ -43,8 +50,9 @@ bool isValidDate(const std::string& date, const std::string& value) {
     return true;
 }
 
-bool isValidNumber(const std::string& value) {
-    std::stringstream ss(value);
+bool isValidNumber(const std::string& value) 
+{
+    std::istringstream ss(value);
     float f;
     if ((ss >> f) && ss.eof() && f >= 0.0f && f <= 1000.0f)
         return true;
@@ -55,7 +63,8 @@ bool isValidNumber(const std::string& value) {
     return false;
 }
 
-bool isValidLine(const std::string& line) {
+bool isValidLine(const std::string& line) 
+{
     size_t pipePos = line.find('|');
     if (pipePos == std::string::npos)
     {
@@ -73,7 +82,8 @@ bool isValidLine(const std::string& line) {
 }
 
 
-void trim(std::string& s) {
+void trim(std::string& s) 
+{
     size_t start = s.find_first_not_of(" \t\n\r");
     size_t end = s.find_last_not_of(" \t\n\r");
 
@@ -83,9 +93,11 @@ void trim(std::string& s) {
         s = s.substr(start, end - start + 1);
 }
 
-void processInputLines(const std::string& filename, const std::map<std::string, float>& priceMap) {
+void processInputLines(const std::string& filename, const std::map<std::string, float>& priceMap) 
+{
     std::ifstream file(filename.c_str());
-    if (!file.is_open()) {
+    if (!file.is_open()) 
+    {
         std::cerr << "Error: could not open input file." << std::endl;
         return;
     }
@@ -93,7 +105,8 @@ void processInputLines(const std::string& filename, const std::map<std::string, 
     std::string line;
     std::getline(file, line);
 
-    while (std::getline(file, line)) {
+    while (std::getline(file, line)) 
+    {
         if (!isValidLine(line))
             continue;
         size_t pipePos = line.find('|');
@@ -107,8 +120,10 @@ void processInputLines(const std::string& filename, const std::map<std::string, 
 
         std::map<std::string, float>::const_iterator it = priceMap.lower_bound(date);
 
-        if (it == priceMap.end() || it->first != date) {
-            if (it == priceMap.begin()) {
+        if (it == priceMap.end() || it->first != date) 
+        {
+            if (it == priceMap.begin()) 
+            {
                 std::cerr << "Error: no price data before => " << date << std::endl;
                 continue;
             }

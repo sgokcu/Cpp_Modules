@@ -8,8 +8,6 @@
 #include <stack>
 #include <string>
 
-
 int evaluate(const std::string& expr);
-
 
 #endif

@@ -1,12 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <deque>
-#include <stdexcept>
-#include <ctime>
-#include <stdint.h>
-#include <iomanip>
-#include <chrono>
 #include "PmergeMe.hpp"
 
 bool isPositiveInteger(const std::string& str) {
@@ -18,7 +9,7 @@ bool isPositiveInteger(const std::string& str) {
 	}
 	return true;
 }
-/*
+
 bool isSorted(std::vector<int>& numbers)
 {
     for (std::size_t i = 1; i < numbers.size(); ++i) {
@@ -28,7 +19,7 @@ bool isSorted(std::vector<int>& numbers)
     }
     return true;
 }
-*/
+
 
 int main(int argc, char** argv) {
 	if (argc < 2) {
@@ -38,14 +29,14 @@ int main(int argc, char** argv) {
 
 	std::vector<int> numbers;
 	for (int i = 1; i < argc; ++i) {
-		std::string arg = argv[i];
-		if (!isPositiveInteger(arg)) {
-			std::cerr << "Error: Invalid input: " << arg << std::endl;
+		if (!isPositiveInteger(argv[i])) {
+			std::cerr << "Error: Invalid input: " << argv[i] << std::endl;
 			return 1;
 		}
+		std::string arg = argv[i];
 		long long val = std::atoll(arg.c_str());
 		if (val < 0 || val > INT32_MAX) {
-			std::cerr << "Error: Number out of range: " << arg << std::endl;
+			std::cerr << "Error: Number out of range: " << argv[i] << std::endl;
 			return 1;
 		}
 		numbers.push_back(static_cast<int>(val));
@@ -57,15 +48,14 @@ int main(int argc, char** argv) {
 	std::cout << std::endl;
 
 	try {
-		PmergeMe sorter;
 
-		auto startVec = std::chrono::high_resolution_clock::now();
-		std::vector<int> vecResult = sorter.sortWithVector(numbers);
-		auto endVec = std::chrono::high_resolution_clock::now();
+		std::clock_t startVec = std::clock();
+		std::vector<int> vecResult = sortWithVector(numbers);
+		std::clock_t endVec = std::clock();
 
-		auto startDeque = std::chrono::high_resolution_clock::now();
-		std::deque<int> deqResult = sorter.sortWithDeque(numbers);
-		auto endDeque = std::chrono::high_resolution_clock::now();
+		std::clock_t startDeque = std::clock();
+		std::deque<int> deqResult = sortWithDeque(numbers);
+		std::clock_t endDeque = std::clock();
 
 		std::cout << "After: ";
 		for (size_t i = 0; i < vecResult.size(); ++i)
@@ -73,24 +63,19 @@ int main(int argc, char** argv) {
 		std::cout << std::endl;
 		
 		
-		std::chrono::duration<double, std::micro> timeVec = endVec - startVec;
-        std::chrono::duration<double, std::micro> timeDeque = endDeque - startDeque;
+		double timeVec = 1000000.0 * (endVec - startVec) / CLOCKS_PER_SEC;
+		double timeDeque = 1000000.0 * (endDeque - startDeque) / CLOCKS_PER_SEC;
 
-		//if(isSorted(vecResult))
-		//std::cout << "it is sorted perfectly <3" << std::endl; 
+		if(isSorted(vecResult))
+		std::cout << "it's sorted perfectly <3" << std::endl; 
 
 
 	    std::cout << std::fixed << std::setprecision(5);
-        std::cout << "Time with vector: " << timeVec.count() << " us" << std::endl;
-        std::cout << "Time with deque : " << timeDeque.count() << " us" << std::endl;
-	} 
-	
-	
-	
+        std::cout << "Time with vector: " << timeVec << " us" << std::endl;
+        std::cout << "Time with deque : " << timeDeque << " us" << std::endl;
+	}
 	catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;
 	}
-
-	return 0;
 }

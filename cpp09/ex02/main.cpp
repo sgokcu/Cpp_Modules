@@ -1,6 +1,7 @@
 #include "PmergeMe.hpp"
 
-bool isPositiveInteger(const std::string& str) {
+bool isPositiveInteger(const std::string& str) 
+{
 	if (str.empty())
 		return false;
 	for (size_t i = 0; i < str.size(); ++i) 
@@ -11,16 +12,18 @@ bool isPositiveInteger(const std::string& str) {
 	return true;
 }
 
-bool isSorted(std::vector<int>& numbers)
+void isSorted(std::vector<int>& numbers)
 {
     for (std::size_t i = 1; i < numbers.size(); ++i) 
     {
         if (numbers[i - 1] >= numbers[i])
-            return false;
+			{
+            std::cout << "it isn't sorted correctly." << std::endl;
+				return ;
+			}
     }
-    return true;
+    std::cout << "it's sorted perfectly <3" << std::endl;
 }
-
 
 int main(int argc, char** argv) 
 {
@@ -29,7 +32,6 @@ int main(int argc, char** argv)
 		std::cerr << "Error: Not enough arguments." << std::endl;
 		return 1;
 	}
-
 	std::vector<int> numbers;
 	for (int i = 1; i < argc; ++i) 
 	{
@@ -64,12 +66,10 @@ int main(int argc, char** argv)
 			std::cout << vecResult[i] << " ";
 		std::cout << std::endl;
 		
-		
 		double timeVec = 1000000.0 * (endVec - startVec) / CLOCKS_PER_SEC;
 		double timeDeque = 1000000.0 * (endDeque - startDeque) / CLOCKS_PER_SEC;
 
-		if(isSorted(vecResult))
-		std::cout << "it's sorted perfectly <3" << std::endl; 
+		//isSorted(vecResult);
 
 	    std::cout << std::fixed << std::setprecision(5);
         std::cout << "Time with vector: " << timeVec << " us" << std::endl;

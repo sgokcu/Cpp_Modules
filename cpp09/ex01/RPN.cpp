@@ -36,6 +36,5 @@ int evaluate(const std::string& expr)
     }
     if (stack.size() != 1)
         throw std::runtime_error("Invalid final stack");
-
     return stack.top();
 }

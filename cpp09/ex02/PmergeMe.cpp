@@ -38,7 +38,6 @@ void merge(std::vector<int>& vec, int left, int mid, int right)
         else
             vec[k++] = rightVec[j++];
     }
-
     while (i < (int)leftVec.size())
         vec[k++] = leftVec[i++];
     while (j < (int)rightVec.size())
@@ -58,7 +57,7 @@ void mergeInsertSort(std::deque<int>& deq, int left, int right)
 	if (left >= right)
 		return;
 
-	int mid = left + (right - left) / 2;
+	int mid = (left + right) / 2;
 	mergeInsertSort(deq, left, mid);
 	mergeInsertSort(deq, mid + 1, right);
 	merge(deq, left, mid, right);
@@ -83,7 +82,6 @@ void merge(std::deque<int>& deq, int left, int mid, int right)
         else
             deq[k++] = rightDeq[j++];
     }
-
     while (i < (int)leftDeq.size())
         deq[k++] = leftDeq[i++];
     while (j < (int)rightDeq.size())
